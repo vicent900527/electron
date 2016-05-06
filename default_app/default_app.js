@@ -20,5 +20,6 @@ exports.load = function (appUrl) {
     })
     mainWindow.loadURL(appUrl)
     mainWindow.focus()
+    mainWindow.webContents.getResourceUsage((x) => console.log(x));
   })
 }
