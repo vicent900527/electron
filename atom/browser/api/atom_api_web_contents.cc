@@ -1273,7 +1273,8 @@ void WebContents::BuildPrototype(v8::Isolate* isolate,
       .SetProperty("session", &WebContents::Session)
       .SetProperty("hostWebContents", &WebContents::HostWebContents)
       .SetProperty("devToolsWebContents", &WebContents::DevToolsWebContents)
-      .SetProperty("debugger", &WebContents::Debugger);
+      .SetProperty("debugger", &WebContents::Debugger)
+      .SetProperty("getResourceUsage", &WebContents::GetResourceUsage);
 }
 
 AtomBrowserContext* WebContents::GetBrowserContext() const {
