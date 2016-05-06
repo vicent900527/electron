@@ -12,9 +12,11 @@
 #include "atom/browser/api/save_page_handler.h"
 #include "atom/browser/api/trackable_object.h"
 #include "atom/browser/common_web_contents_delegate.h"
+#include "atom/common/native_mate_converters/callback.h"
 #include "content/public/browser/web_contents_observer.h"
 #include "content/public/common/favicon_url.h"
 #include "content/common/cursors/webcursor.h"
+#include "native_mate/dictionary.h"
 #include "native_mate/handle.h"
 #include "ui/gfx/image/image.h"
 
@@ -32,6 +34,9 @@ class Dictionary;
 }
 
 namespace atom {
+
+using ResourceUsageCallback =
+  base::Callback<void(const mate::Dictionary)>;
 
 struct SetSizeParams;
 class AtomBrowserContext;
@@ -158,6 +163,8 @@ class WebContents : public mate::TrackableObject<WebContents>,
   content::WebContents* HostWebContents();
   v8::Local<v8::Value> DevToolsWebContents(v8::Isolate* isolate);
   v8::Local<v8::Value> Debugger(v8::Isolate* isolate);
+
+  void GetResourceUsage(const ResourceUsageCallback& callback);
 
  protected:
   WebContents(v8::Isolate* isolate, content::WebContents* web_contents);

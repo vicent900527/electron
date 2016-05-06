@@ -344,6 +344,13 @@ void WebContents::OnCreateWindow(const GURL& target_url,
     Emit("new-window", target_url, frame_name, disposition);
 }
 
+void WebContents::GetResourceUsage(const ResourceUsageCallback& callback) {
+  mate::Dictionary dict(isolate(), v8::Object::New(isolate()));
+  dict.Set("foo", 5);
+
+  callback.Run(dict);
+}
+
 content::WebContents* WebContents::OpenURLFromTab(
     content::WebContents* source,
     const content::OpenURLParams& params) {
