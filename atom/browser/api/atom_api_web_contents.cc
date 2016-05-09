@@ -1270,11 +1270,11 @@ void WebContents::BuildPrototype(v8::Isolate* isolate,
       .SetMethod("_printToPDF", &WebContents::PrintToPDF)
       .SetMethod("addWorkSpace", &WebContents::AddWorkSpace)
       .SetMethod("removeWorkSpace", &WebContents::RemoveWorkSpace)
+      .SetMethod("getResourceUsage", &WebContents::GetResourceUsage)
       .SetProperty("session", &WebContents::Session)
       .SetProperty("hostWebContents", &WebContents::HostWebContents)
       .SetProperty("devToolsWebContents", &WebContents::DevToolsWebContents)
-      .SetProperty("debugger", &WebContents::Debugger)
-      .SetProperty("getResourceUsage", &WebContents::GetResourceUsage);
+      .SetProperty("debugger", &WebContents::Debugger);
 }
 
 AtomBrowserContext* WebContents::GetBrowserContext() const {
